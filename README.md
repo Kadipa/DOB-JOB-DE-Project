@@ -78,7 +78,21 @@ Orchestrated via **Airflow DAG** with all tasks automated.
 Dashboard accessible via Metabase with:
 
 
-![Dashboard](./Data-Dashbord/dash-board.mov)
+![Dashboard](./Data-Dashbord/dash-board.gif)
+
+We can also see how the data is passed to the metabase, tables and job summary.
+
+![Database](./Data-Dashboard/database.png)
+
+Fig1: Database in the metabase
+
+![Analytics_table](./Data-Dashboard/analytics_table.png)
+
+Fig 2: Analytics Table
+
+![Job_Summary](./Data-Dashboard/jobSummary.png)
+
+Fig 3: Job Summary 
 
 ---
 
@@ -95,6 +109,7 @@ State files are excluded via `.gitignore`.
 
 ## 📁 Project Structure
 
+```plaintext
 DOB-JOB-DE-PROJECT/
 ├── dags/                         # Airflow DAGs and dbt project
 │   ├── dob_dbt_project/          # dbt transformations
