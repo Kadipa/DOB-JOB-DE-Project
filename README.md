@@ -209,14 +209,19 @@ From the project root:
 ```docker-compose up --build```
 
 ✅ Airflow: http://localhost:8080
+
 ✅ Metabase: http://localhost:3000
 
 Trigger DAG in Airflow to run full pipeline.
 
-Bonus Improvements
+### Bonus Improvements
+
 ✅ Airflow DAG with clear dependencies
+
 ✅ Automated Metabase dashboard creation
+
 ✅ Modular repo with separate folders per tool
+
 ✅ .gitignore for security
 
 
