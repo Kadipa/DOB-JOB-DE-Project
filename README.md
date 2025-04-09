@@ -18,6 +18,29 @@ The goal: enable stakeholders to explore trends in construction filings via an e
 
 ---
 
+## 📚 Dataset & Design Decisions
+
+### 📎 Dataset Source
+
+This project uses the [NYC Job Application Filings dataset](https://data.cityofnewyork.us/City-Government/NYC-Jobs/pda4-rgn4/about_data) published by the City of New York.
+
+- It contains detailed information about building job filings in NYC
+- The data is **updated daily**, making it suitable for periodic ingestion
+- Data is retrieved via a REST API and stored in Parquet format
+
+---
+
+### ⏳ Why Batch Processing?
+
+Since the dataset is updated daily (not in real-time), a **batch processing** architecture was chosen:
+
+- ✅ Ingestion is triggered **once per day**
+- ✅ Keeps infrastructure cost and complexity low
+- ✅ Ideal for scheduled workflows using **Airflow**
+- ✅ Supports dbt transformations and downstream analytics without needing stream processors
+
+---
+
 ## ☁️ Cloud Setup
 
 - All services are deployed using **AWS**:
@@ -223,5 +246,23 @@ Trigger DAG in Airflow to run full pipeline.
 ✅ Modular repo with separate folders per tool
 
 ✅ .gitignore for security
+
+
+### 🛠 Redshift VARCHAR Length Fix Issue
+
+During ingestion from Redshift Spectrum to internal Redshift tables, the pipeline encountered the following error:
+
+``` psycopg2.errors.InternalError_: Value too long for type character varying(256) ```
+
+#### ✅ Fix:
+
+- All columns were **trimmed using `LEFT(column, 256)`** during the SELECT phase
+- The `job_description` column — which contains long text — was preserved using **`VARCHAR(65535)`** in the Redshift table schema
+- This ensured compatibility with Redshift without losing important descriptive information
+
+---
+
+These decisions were made to ensure that the pipeline is scalable, cost-efficient, and robust for daily update.
+
 
 
