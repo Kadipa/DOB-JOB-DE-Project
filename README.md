@@ -95,7 +95,54 @@ State files are excluded via `.gitignore`.
 
 ## 📁 Project Structure
 
-<pre> DOB-JOB-DE-PROJECT/ ├── dags/ # Airflow DAGs and dbt project │ ├── dob_dbt_project/ # dbt transformations │ │ ├── analyses/ │ │ ├── macros/ │ │ ├── models/ │ │ ├── seeds/ │ │ ├── snapshots/ │ │ ├── tests/ │ │ ├── dbt_project.yml │ │ ├── profiles.yml │ │ └── .gitignore │ └── full_pipeline_dag.py # Airflow DAG to run the pipeline │ ├── job-dlt-pipeline/ # DLT ingestion pipeline │ ├── .dlt/ │ │ ├── config.toml │ │ └── secrets.toml │ ├── rest_api_pipeline.py │ └── .gitignore │ ├── scripts/ # Custom scripts for AWS, Redshift, etc. │ ├── copy_to_redshift.py │ ├── create_external_schema.py │ ├── metabase_automation.py │ └── run_glue_crawler.py │ ├── terraform/ # Infrastructure as Code (Terraform) │ ├── main.tf │ ├── variables.tf │ ├── outputs.tf │ ├── terraform.tfvars │ ├── terraform.tfstate │ ├── .terraform/ │ ├── .terraform.lock.hcl │ └── .gitignore │ ├── Dockerfile # Custom image for Airflow ├── docker-compose.yaml # Runs Airflow & Metabase ├── requirements.txt # Python dependencies ├── data_column_read.ipynb # EDA notebook (optional) ├── .env # Actual secrets (excluded from git) ├── .env.example # Safe version of env file for reproducibility ├── .gitignore # Git ignore rules ├── README.md # Full project documentation └── screenshots/ # Optional image folder for README └── nyc_dob_dashboard.png </pre>
+DOB-JOB-DE-PROJECT/
+├── dags/                         # Airflow DAGs and dbt project
+│   ├── dob_dbt_project/          # dbt transformations
+│   │   ├── analyses/
+│   │   ├── macros/
+│   │   ├── models/
+│   │   ├── seeds/
+│   │   ├── snapshots/
+│   │   ├── tests/
+│   │   ├── dbt_project.yml
+│   │   ├── profiles.yml
+│   │   └── .gitignore
+│   └── full_pipeline_dag.py      # Airflow DAG to run the pipeline
+│
+├── job-dlt-pipeline/             # DLT ingestion pipeline
+│   ├── .dlt/
+│   │   ├── config.toml    # (Should be gitignored)
+│   │   └── secrets.toml   # (Should be gitignored)
+│   ├── rest_api_pipeline.py
+│   └── .gitignore
+│
+├── scripts/                      # Custom scripts for AWS, Redshift, etc.
+│   ├── copy_to_redshift.py
+│   ├── create_external_schema.py
+│   ├── metabase_automation.py
+│   └── run_glue_crawler.py
+│
+├── terraform/                    # Infrastructure as Code (Terraform)
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── terraform.tfvars          # (Should be gitignored)
+│   ├── terraform.tfstate         
+│   ├── .terraform/               # (Should be gitignored)
+│   ├── .terraform.lock.hcl
+│   └── .gitignore
+│
+├── Dockerfile                    # Custom Airflow image
+├── docker-compose.yaml           # Run Airflow + Metabase
+├── requirements.txt              # Python dependencies
+├── data_column_read.ipynb        # EDA notebook
+├── .env                          # Actual secrets (excluded from Git)
+├── .env.example                  # Example env file
+├── .gitignore
+├── README.md                     # Project documentation
+└── Data-Dashboard/
+    └── nyc_dob_dashboard.png     # Image for README preview
+
 
 
 ---
@@ -131,6 +178,6 @@ Bonus Improvements
 ✅ Airflow DAG with clear dependencies
 ✅ Automated Metabase dashboard creation
 ✅ Modular repo with separate folders per tool
-✅ .env.example + .gitignore for security
+✅ .gitignore for security
 
 
