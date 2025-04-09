@@ -1,0 +1,6 @@
+version: 2
+
+sources:
+  - name: spectrum_schema     # schema name in Redshift
+    tables:
+      - name: nyc_dob_jobs    # your external table name

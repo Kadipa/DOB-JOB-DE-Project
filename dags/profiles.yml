@@ -1,0 +1,13 @@
+default:
+  outputs:
+    dev:
+      dbname: dev
+      host: dobnamespace-workgroup.354294457076.ap-southeast-1.redshift-serverless.amazonaws.com
+      password: DE-4roject!
+      port: 5439
+      schema: spectrum_schema
+      threads: 4
+      type: redshift
+      user: de_redshift_admin_user
+      method: database
+  target: dev

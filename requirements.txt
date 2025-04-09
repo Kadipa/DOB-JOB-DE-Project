@@ -1,0 +1,7 @@
+dlt[filesystem]
+dbt-redshift
+pandas
+pyarrow>=14.0.0,<15.0.0
+boto3
+psycopg2-binary
+python-dotenv
