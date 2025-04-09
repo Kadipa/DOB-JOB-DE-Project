@@ -77,8 +77,7 @@ Orchestrated via **Airflow DAG** with all tasks automated.
 
 Dashboard accessible via Metabase with:
 
-
-![Dashboard](./Data-Dashbord/dash-board.gif)
+![Dashboard](./Data-Dashboard/dash-board.gif)
 
 We can also see how the data is passed to the metabase, tables and job summary.
 
@@ -157,9 +156,7 @@ DOB-JOB-DE-PROJECT/
 ├── README.md                     # Project documentation
 └── Data-Dashboard/
     └── nyc_dob_dashboard.png     # Image for README preview
-
-
-
+```
 ---
 
 ## 💻 Reproducibility
@@ -169,8 +166,6 @@ DOB-JOB-DE-PROJECT/
 ```bash
 git clone https://github.com/YOUR_USERNAME/nyc-dob-job-pipeline.git
 cd nyc-dob-job-pipeline
-
-
 
 Fill in:
 
