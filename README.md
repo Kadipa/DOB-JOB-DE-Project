@@ -12,7 +12,7 @@ New York City’s Department of Buildings publishes building job application dat
 - Data load from the API by using dlt(data load tool)
 - Stores it in an AWS-based lakehouse architecture (S3 + Redshift)
 - Transforms the data using dbt
-- Visualizes insights on job types, e-filing, equipment usage, and building types
+- Visualizes insights on job types
 
 The goal: enable stakeholders to explore trends in construction filings via an easy-to-use dashboard.
 
@@ -159,4 +159,64 @@ DOB-JOB-DE-PROJECT/
 ---
 
 ## 💻 Reproducibility
+
+### 1. Clone this repo & setup env
+
+```
+git clone https://github.com/YOUR_USERNAME/nyc-dob-job-pipeline.git
+cd nyc-dob-job-pipeline
+```
+Please create .env file and fill in(Please check the .envExample):
+
+- AWS keys
+- Redshift credentials
+- IAM role
+- Metabase user
+- dlt secret.toml
+
+### 2. Provision AWS Infrastructure Using Terraform
+Terraform will create all required AWS resources automatically:
+
+```bash
+cd terraform/
+terraform init
+terraform apply
+ ```
+
+Terraform will create:
+
+- S3 bucket for storing raw data
+- Redshift Serverless workgroup
+- IAM role for Redshift Spectrum
+
+- After completion, copy any outputs (bucket name, role ARN, etc.) into your .env(Please check .envExample).
+
+### 3. Manually Set DLT Secrets 
+
+```
+# job-dlt-pipeline/.dlt/secrets.toml
+[default]
+aws_access_key_id = "YOUR_AWS_ACCESS_KEY"
+aws_secret_access_key = "YOUR_AWS_SECRET_KEY"
+```
+
+- These are required to allow DLT to upload to S3.
+
+### 4. Run containers
+
+From the project root:
+
+```docker-compose up --build```
+
+✅ Airflow: http://localhost:8080
+✅ Metabase: http://localhost:3000
+
+Trigger DAG in Airflow to run full pipeline.
+
+Bonus Improvements
+✅ Airflow DAG with clear dependencies
+✅ Automated Metabase dashboard creation
+✅ Modular repo with separate folders per tool
+✅ .gitignore for security
+
 
