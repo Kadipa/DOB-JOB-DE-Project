@@ -149,7 +149,6 @@ DOB-JOB-DE-PROJECT/
 ├── Dockerfile                    # Custom Airflow image
 ├── docker-compose.yaml           # Run Airflow + Metabase
 ├── requirements.txt              # Python dependencies
-├── data_column_read.ipynb        # EDA notebook
 ├── .env                          # Actual secrets (excluded from Git)
 ├── .env.example                  # Example env file
 ├── .gitignore
@@ -160,34 +159,4 @@ DOB-JOB-DE-PROJECT/
 ---
 
 ## 💻 Reproducibility
-
-### 1. Clone this repo & setup env
-
-```bash
-git clone https://github.com/YOUR_USERNAME/nyc-dob-job-pipeline.git
-cd nyc-dob-job-pipeline
-
-Fill in:
-
-- AWS keys
-- Redshift credentials
-- IAM role
-- Metabase user
-- dlt secret.toml
-
-Run containers
-
-- docker-compose up --build
-
-✅ Airflow: http://localhost:8080
-✅ Metabase: http://localhost:3000
-
-Trigger DAG in Airflow to run full pipeline.
-
-Bonus Improvements
-✅ Airflow DAG with clear dependencies
-✅ Automated Metabase dashboard creation
-✅ Modular repo with separate folders per tool
-✅ .gitignore for security
-
 
