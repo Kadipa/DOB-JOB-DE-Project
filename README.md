@@ -14,8 +14,6 @@ New York City’s Department of Buildings publishes building job application dat
 - Transforms the data using dbt
 - Visualizes insights on job types
 
-The goal: enable stakeholders to explore trends in construction filings via an easy-to-use dashboard.
-
 ---
 
 ## 📚 Dataset & Design Decisions
@@ -177,7 +175,7 @@ DOB-JOB-DE-PROJECT/
 ├── .gitignore
 ├── README.md                     # Project documentation
 └── Data-Dashboard/
-    └── nyc_dob_dashboard.png     # Image for README preview
+    └── dash-board.gif     # Image for README preview
 ```
 ---
 
@@ -264,5 +262,5 @@ During ingestion from Redshift Spectrum to internal Redshift tables, the pipelin
 
 These decisions were made to ensure that the pipeline is scalable, cost-efficient, and robust for daily update.
 
-
+----
 
