@@ -166,6 +166,6 @@ SELECT
 FROM "{external_schema}"."{external_table}";
 """)
 
-print(f"✅ Data copied from {external_schema}.{external_table} to {target_schema}.{target_table}")
+print(f" Data copied from {external_schema}.{external_table} to {target_schema}.{target_table}")
 cur.close()
 conn.close()
