@@ -9,3 +9,11 @@ output "redshift_endpoint" {
 output "iam_role_redshift_s3_access_arn" {
   value = aws_iam_role.redshift_s3_access_role.arn
 }
+
+output "glue_database_name" {
+  value = aws_glue_catalog_database.dob_database.name
+}
+
+output "glue_crawler_name" {
+  value = aws_glue_crawler.dob_crawler.name
+}
