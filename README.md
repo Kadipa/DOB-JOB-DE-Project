@@ -108,11 +108,11 @@ Fig1: The database is accessible from metabase
 
 ![Analytics_table](./Data-Dashboard/analytics_table.png)
 
-Fig 2: Analytics Table (Transformed Data in Redshift 'analytics' Schema)
+Fig 2: Transformed Data in Redshift 'analytics' Schema
 
 ![Job_Summary](./Data-Dashboard/jobSummary.png)
 
-Fig 3: Job Summary based on the JOB Type
+Fig 3: Job Summary based on the Job Type
 
 ---
 
