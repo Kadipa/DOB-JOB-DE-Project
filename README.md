@@ -260,6 +260,7 @@ You will see the airflow orchestration like this:
 Fig 4: Airflow DAG 
 
 Note: To Run the Metabase step correctly, you have to put the correct username and password in the .env. 
+--- 
 
 Everything is done, when you want to clean this project, you can wipe it out by using this command: 
 
@@ -267,6 +268,7 @@ Everything is done, when you want to clean this project, you can wipe it out by 
 cd terraform
 terraform destroy
 ```
+It will clean up the AWS resources except s3 bucket because s3 bucket isn't empty.
 
 ### Bonus Improvements
 
