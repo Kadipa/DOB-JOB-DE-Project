@@ -1,10 +1,10 @@
-# 🏙️ NYC DOB Job Data Pipeline — DE Zoomcamp 2025 Course Project
+# NYC DOB Job Data Pipeline — DE Zoomcamp 2025 Course Project
 
 This project is part of the Data Engineering Zoomcamp course and follows the full project rubric. It builds a real-world batch data pipeline to ingest, transform, and visualize New York City Department of Buildings (DOB) job application filings using modern data engineering tools and AWS cloud services.
 
 ---
 
-## 🎯 Problem Description
+## Problem Description
 
 New York City’s Department of Buildings publishes building job application data. This project builds a pipeline that:
 
@@ -16,9 +16,9 @@ New York City’s Department of Buildings publishes building job application dat
 
 ---
 
-## 📚 Dataset & Design Decisions
+## Dataset & Design Decisions
 
-### 📎 Dataset Source
+### Dataset Source
 
 This project uses the [NYC Job Application Filings dataset](https://data.cityofnewyork.us/City-Government/NYC-Jobs/pda4-rgn4/about_data) published by the City of New York.
 
@@ -28,18 +28,18 @@ This project uses the [NYC Job Application Filings dataset](https://data.cityofn
 
 ---
 
-### ⏳ Why Batch Processing?
+### Why Batch Processing?
 
 Since the dataset is updated daily (not in real-time), a **batch processing** architecture was chosen:
 
-- ✅ Ingestion is triggered **once per day**
-- ✅ Keeps infrastructure cost and complexity low
-- ✅ Ideal for scheduled workflows using **Airflow**
-- ✅ Supports dbt transformations and downstream analytics without needing stream processors
+1. Ingestion is triggered **once per day**
+1. Keeps infrastructure cost and complexity low
+1. Ideal for scheduled workflows using **Airflow**
+1. Supports dbt transformations and downstream analytics without needing stream processors
 
 ---
 
-## ☁️ Cloud Setup
+## Cloud Setup
 
 - All services are deployed using **AWS**:
   - Redshift Serverless (data warehouse)
@@ -50,7 +50,7 @@ Since the dataset is updated daily (not in real-time), a **batch processing** ar
 
 ---
 
-## 📦 Pipeline Overview (Batch)
+## Pipeline Overview (Batch)
 
 This is a **batch pipeline**, scheduled to run daily via Airflow.
 
@@ -68,7 +68,7 @@ Orchestrated via **Airflow DAG** with all tasks automated.
 
 ---
 
-## 🧰 Tools & Tech
+## Tools & Tech
 
 | Layer                | Tool                        |
 |---------------------|-----------------------------|
@@ -85,7 +85,7 @@ Orchestrated via **Airflow DAG** with all tasks automated.
 
 ---
 
-## 🧪 dbt Transformations
+## dbt Transformations
 
 - `stg_dob_jobs.sql`: staging model from raw data
 - `cleaned_jobs.sql`: final analytics model
@@ -94,7 +94,7 @@ Orchestrated via **Airflow DAG** with all tasks automated.
 
 ---
 
-## 📊 Dashboard (Metabase)
+##  Dashboard (Metabase)
 
 Dashboard accessible via Metabase with:
 
@@ -104,19 +104,19 @@ We can also see how the data is passed to the metabase, tables and job summary.
 
 ![Database](./Data-Dashboard/database.png)
 
-Fig1: Database in the metabase
+Fig1: The database is accessible from metabase
 
 ![Analytics_table](./Data-Dashboard/analytics_table.png)
 
-Fig 2: Analytics Table
+Fig 2: Analytics Table (Transformed Data in Redshift 'analytics' Schema)
 
 ![Job_Summary](./Data-Dashboard/jobSummary.png)
 
-Fig 3: Job Summary 
+Fig 3: Job Summary based on the JOB Type
 
 ---
 
-## 🛠️ Infrastructure with Terraform
+## Infrastructure with Terraform
 
 Provisioned using `terraform/`:
 
@@ -127,7 +127,7 @@ Provisioned using `terraform/`:
 
 State files are excluded via `.gitignore`.
 
-## 📁 Project Structure
+##  Project Structure
 
 ```plaintext
 DOB-JOB-DE-PROJECT/
@@ -179,7 +179,7 @@ DOB-JOB-DE-PROJECT/
 ```
 ---
 
-## 💻 Reproducibility
+##  Reproducibility
 
 ### 1. Clone this repo & setup env
 
@@ -237,22 +237,19 @@ Trigger DAG in Airflow to run full pipeline.
 
 ### Bonus Improvements
 
-✅ Airflow DAG with clear dependencies
-
-✅ Automated Metabase dashboard creation
-
-✅ Modular repo with separate folders per tool
-
-✅ .gitignore for security
+1. Airflow DAG with clear dependencies
+1. Automated Metabase dashboard creation
+1. Modular repo with separate folders per tool
+1. gitignore for security
 
 
-### 🛠 Redshift VARCHAR Length Fix Issue
+###  Redshift VARCHAR Length Fix Issue
 
 During ingestion from Redshift Spectrum to internal Redshift tables, the pipeline encountered the following error:
 
 ``` psycopg2.errors.InternalError_: Value too long for type character varying(256) ```
 
-#### ✅ Fix:
+#### Fix:
 
 - All columns were **trimmed using `LEFT(column, 256)`** during the SELECT phase
 - The `job_description` column — which contains long text — was preserved using **`VARCHAR(65535)`** in the Redshift table schema
