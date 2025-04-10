@@ -45,7 +45,7 @@ Since the dataset is updated daily (not in real-time), a **batch processing** ar
   - Redshift Serverless (data warehouse)
   - S3 (data lake)
   - AWS Glue (catalog)
-  - IAM Roles for permissioning
+  - IAM Roles for permissions
 - Infrastructure provisioned using **Terraform** as IaC(Infrastructure as code)
 
 ---
@@ -227,13 +227,42 @@ aws_secret_access_key = "YOUR_AWS_SECRET_KEY"
 
 From the project root:
 
-```docker-compose up --build```
+```docker-compose build -no-cache```
+```docker compose up -d```
+
+If you are running airflow for the first time,
+
+```docker compose run airflow-webserver airflow db init``` (only for the first time)
+
+If you don't have an account for the airflow yet,  you can set it up like this:
+
+```
+docker compose run airflow-webserver airflow users create \         
+  --username admin \
+  --firstname Admin \
+  --lastname User \
+  --role Admin \
+  --email admin@example.com \
+  --password admin
+```
 
 ✅ Airflow: http://localhost:8080
 
 ✅ Metabase: http://localhost:3000
 
-Trigger DAG in Airflow to run full pipeline.
+Trigger DAG in Airflow to run an entire pipeline.
+
+You will see the airflow orchestration like this:
+
+![airflow](./Data-Dashboard/airflow.png)
+
+Fig 4: Airflow DAG 
+
+Everything is done, when you want to clean this project, you can wipe it out by using this command: 
+
+```
+cd terraform
+terraform destroy```
 
 ### Bonus Improvements
 
