@@ -259,8 +259,11 @@ You will see the airflow orchestration like this:
 
 Fig 4: Airflow DAG 
 
-Note: To Run the Metabase step correctly, you have to put the correct username and password in the .env. 
+Note: To Run the Metabase step correctly, you have to put the correct username and password in the .env.
+
 --- 
+
+### Clean Up Resources
 
 Everything is done, when you want to clean this project, you can wipe it out by using this command: 
 
