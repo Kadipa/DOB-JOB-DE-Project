@@ -40,11 +40,11 @@ variable "glue_crawler_name" {
 variable "s3_bucket_path" {
   description = "The S3 path where raw data is stored."
   type        = string
-  default     = "s3://de-project-s3-datalake-bucket-south-east-region/dob_jobs/nyc_dob_job_data"
+  default     = "s3://your-bucket-name/dob_jobs/nyc_dob_job_data"
 }
 
 variable "iam_role" {
   description = "IAM role ARN used by Glue and Redshift Spectrum."
   type        = string
-  default     = "arn:aws:iam::354294457076:role/RedshiftSpectrumRole"
+  default     = "arn:aws:iam::yourIAMRole:role/RedshiftSpectrumRole" 
 }
