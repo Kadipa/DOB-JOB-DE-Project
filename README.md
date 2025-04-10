@@ -198,7 +198,7 @@ Please create .env file and fill in(Please check the .envExample):
 ### 2. Provision AWS Infrastructure Using Terraform
 Terraform will create all required AWS resources automatically:
 
-```bash
+```
 cd terraform/
 terraform init
 terraform apply
@@ -228,6 +228,7 @@ aws_secret_access_key = "YOUR_AWS_SECRET_KEY"
 From the project root:
 
 ```docker-compose build -no-cache```
+
 ```docker compose up -d```
 
 If you are running airflow for the first time,
@@ -258,18 +259,21 @@ You will see the airflow orchestration like this:
 
 Fig 4: Airflow DAG 
 
+Note: To Run the Metabase step correctly, you have to put the correct username and password in the .env. 
+
 Everything is done, when you want to clean this project, you can wipe it out by using this command: 
 
 ```
 cd terraform
-terraform destroy```
+terraform destroy
+```
 
 ### Bonus Improvements
 
-1. Airflow DAG with clear dependencies
+1. Airflow DAG with explicit dependencies
 1. Automated Metabase dashboard creation
 1. Modular repo with separate folders per tool
-1. gitignore for security
+1. .gitignore for security
 
 
 ###  Redshift VARCHAR Length Fix Issue
@@ -286,7 +290,7 @@ During ingestion from Redshift Spectrum to internal Redshift tables, the pipelin
 
 ---
 
-These decisions were made to ensure that the pipeline is scalable, cost-efficient, and robust for daily update.
+These decisions were made to ensure that the pipeline is scalable, cost-efficient, and robust for daily updates.
 
 ----
 
