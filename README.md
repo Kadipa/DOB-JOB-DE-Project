@@ -56,12 +56,12 @@ This is a **batch pipeline**, scheduled to run daily via Airflow.
 
 ### Pipeline Steps:
 
-1. **DLT Ingestion**: Calls NYC DOB Job API and stores data as Parquet in local FS
-2. **S3 Upload**: Moves data to S3
-3. **Glue Crawler**: Catalogs data into AWS Glue Data Catalog
-4. **Redshift Spectrum**: Creates external table from Glue catalog
-5. **Internal Copy**: Copies raw data from Spectrum into Redshift internal table
-6. **dbt Transform**: Cleans, models, and tests data
+1. **DLT Ingestion**: Calls NYC DOB Job API and stores data as Parquet in **s3**
+2. **Glue Crawler**: Catalogs data into AWS Glue Data Catalog
+3. **Redshift Spectrum**: Creates external table from Glue catalog
+4. **Internal Copy**: Copies raw data from Spectrum into Redshift internal table
+5. **dbt Transform**: Cleans, models, and transform data
+6. **dbt Test:** Test data
 7. **Metabase Dashboard**: Loads data for business visualization
 
 Orchestrated via **Airflow DAG** with all tasks automated.
