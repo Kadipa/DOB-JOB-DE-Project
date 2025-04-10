@@ -196,7 +196,7 @@ Please create .env file and fill in(Please check the .envExample):
 - dlt secret.toml
 
 ### 2. Provision AWS Infrastructure Using Terraform
-Terraform will create all required AWS resources automatically:
+Terraform will create all required AWS resources automatically and please define terraform variable before running the following command:
 
 ```
 cd terraform/
@@ -209,8 +209,9 @@ Terraform will create:
 - S3 bucket for storing raw data
 - Redshift Serverless workgroup
 - IAM role for Redshift Spectrum
+- Glue Crawler and catalog
 
-- After completion, copy any outputs (bucket name, role ARN, etc.) into your .env(Please check .envExample).
+- After completion, copy any outputs (bucket name, role ARN, etc.) into your .env(Please check .envExample). 
 
 ### 3. Manually Set DLT Secrets 
 
