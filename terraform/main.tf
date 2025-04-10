@@ -56,7 +56,7 @@ resource "aws_glue_catalog_database" "dob_database" {
 resource "aws_glue_crawler" "dob_crawler" {
   name          = var.glue_crawler_name
   database_name = aws_glue_catalog_database.dob_database.name
-  role          = var.iam_role
+  role          = aws_iam_role.redshift_spectrum_role.arn
 
   s3_target {
     path = var.s3_bucket_path
@@ -68,5 +68,24 @@ resource "aws_glue_crawler" "dob_crawler" {
       TableGroupingPolicy: "CombineCompatibleSchemas"
     }
   })
-  
+}
+
+resource "aws_iam_role" "redshift_spectrum_role" {
+  name = "RedshiftSpectrumRole"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = [
+            "glue.amazonaws.com",
+            "redshift.amazonaws.com"
+          ]
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
 }
