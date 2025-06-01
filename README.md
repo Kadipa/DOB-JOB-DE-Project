@@ -228,7 +228,7 @@ aws_secret_access_key = "YOUR_AWS_SECRET_KEY"
 
 From the project root:
 
-```docker-compose build -no-cache```
+```docker compose build --no-cache```
 
 ```docker compose up -d```
 
